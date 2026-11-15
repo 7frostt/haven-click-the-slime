@@ -1,0 +1,996 @@
+[gd_scene format=3 uid="uid://nhou7gewruup"]
+
+[ext_resource type="Script" uid="uid://h0cmvsvmr8n3" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="FontFile" uid="uid://cjggqrq4by8pu" path="res://Melon Squishy.otf" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://dhx4et2cbomps" path="res://slime_transparent_1.png" id="3_5vw27"]
+[ext_resource type="Texture2D" uid="uid://cowwkhqgasv82" path="res://slime_transparent_2.png" id="4_kek77"]
+[ext_resource type="Texture2D" uid="uid://n565858wvvd1" path="res://slime_transparent_3.png" id="5_4c57u"]
+[ext_resource type="Texture2D" uid="uid://ngoy271y003s" path="res://slime_transparent_4.png" id="6_efxa6"]
+[ext_resource type="Texture2D" uid="uid://bdkhqf8fbpwkv" path="res://slime_transparent_5.png" id="7_dg77c"]
+[ext_resource type="AudioStream" uid="uid://05ubfr606a8e" path="res://sfx_click.wav" id="8_click"]
+[ext_resource type="AudioStream" uid="uid://d5aeaxp120tp" path="res://sfx_jump.wav" id="9_jump"]
+[ext_resource type="AudioStream" uid="uid://c275a0yul3nft" path="res://sfx_upgrade.wav" id="10_upgrade"]
+[ext_resource type="AudioStream" uid="uid://civl5bcdrkbx2" path="res://sfx_level_up.wav" id="11_levelup"]
+[ext_resource type="AudioStream" uid="uid://fqimw3qf5ens" path="res://sfx_phase_change.wav" id="12_phase"]
+[ext_resource type="AudioStream" uid="uid://cymvqreqt22qk" path="res://sfx_boost.wav" id="13_boost"]
+[ext_resource type="Script" uid="uid://h4ufjxqxm3db" path="res://ui_manager.gd" id="14_uimgr"]
+[ext_resource type="Script" uid="uid://bwbwhyprey3ma" path="res://feedback_manager.gd" id="15_fbkmgr"]
+[ext_resource type="Texture2D" uid="uid://mithl5rrlimx" path="res://Phase 1 (#1).jpeg" id="bg_phase1"]
+[ext_resource type="Texture2D" uid="uid://5okvnfn7kxpd" path="res://Phase 1 (#2).jpeg" id="bg_phase2"]
+[ext_resource type="Texture2D" uid="uid://deyjbhjqxqha3" path="res://Phase 1 (#3).jpeg" id="bg_phase3"]
+[ext_resource type="Texture2D" uid="uid://cyhe17b3mkn2a" path="res://Phase 1 (#4).jpeg" id="bg_phase4"]
+[ext_resource type="Texture2D" uid="uid://ctcdqcdmx7a1q" path="res://Phase 1 (#5).jpeg" id="bg_phase5"]
+[ext_resource type="Texture2D" uid="uid://ln77srl1dkdt" path="res://item_diet_coke.png" id="item_dcoke"]
+[ext_resource type="Texture2D" uid="uid://bn30mqhabiooc" path="res://item_mtn_dew.png" id="item_mdew"]
+[ext_resource type="Texture2D" uid="uid://dncraio5ubyu8" path="res://item_monster.png" id="item_monst"]
+[ext_resource type="Texture2D" uid="uid://b34wq4gdv48pr" path="res://item_orange.png" id="item_org"]
+[ext_resource type="Texture2D" uid="uid://co4dwhfy44obe" path="res://item_pineapple.png" id="item_pine"]
+[ext_resource type="Texture2D" uid="uid://0nfhrox3iwvi" path="res://item_strawberry.png" id="item_straw"]
+[ext_resource type="Texture2D" uid="uid://uuuwx64vrn8f" path="res://slime_phase2_1.png" id="s2_1"]
+[ext_resource type="Texture2D" uid="uid://da14nyvkjsy3k" path="res://slime_phase2_2.png" id="s2_2"]
+[ext_resource type="Texture2D" uid="uid://vkjk83gvcgtr" path="res://slime_phase2_3.png" id="s2_3"]
+[ext_resource type="Texture2D" uid="uid://d03ghh8sfmtou" path="res://slime_phase2_4.png" id="s2_4"]
+[ext_resource type="Texture2D" uid="uid://cj5pi37jmh2ks" path="res://slime_phase2_5.png" id="s2_5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_10q47"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5vw27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kek77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4c57u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_efxa6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_dg77c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kek77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5vw27")
+}],
+"loop": 0,
+"name": &"jump_0",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("s2_1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("s2_2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("s2_3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("s2_4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("s2_5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("s2_2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("s2_1")
+}],
+"loop": 0,
+"name": &"jump_1",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hud_card"]
+content_margin_left = 18.0
+content_margin_top = 14.0
+content_margin_right = 18.0
+content_margin_bottom = 14.0
+bg_color = Color(0.04, 0.1, 0.22, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.82, 1, 0.7)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0, 0, 0, 0.45)
+shadow_size = 10
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_place_badge"]
+content_margin_left = 12.0
+content_margin_top = 4.0
+content_margin_right = 12.0
+content_margin_bottom = 4.0
+bg_color = Color(0.12, 0.58, 0.85, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up_normal"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08, 0.52, 0.72, 0.95)
+border_width_bottom = 5
+border_color = Color(0.04, 0.32, 0.45, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up_pressed"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.06, 0.42, 0.58, 1)
+border_width_bottom = 1
+border_color = Color(0.03, 0.25, 0.35, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 4
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up_hover"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.65, 0.88, 1)
+border_width_bottom = 5
+border_color = Color(0.06, 0.4, 0.55, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 10
+shadow_offset = Vector2(0, 3)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_up_disabled"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.18, 0.26, 0.7)
+border_width_bottom = 3
+border_color = Color(0.06, 0.1, 0.15, 0.9)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.2)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boost_normal"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 0.55, 0, 0.95)
+border_width_bottom = 4
+border_color = Color(0.8, 0.35, 0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(1, 0.6, 0, 0.45)
+shadow_size = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_boost_hover"]
+content_margin_left = 12.0
+content_margin_top = 6.0
+content_margin_right = 12.0
+content_margin_bottom = 6.0
+bg_color = Color(1, 0.68, 0.15, 1)
+border_width_bottom = 4
+border_color = Color(0.88, 0.42, 0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+shadow_color = Color(1, 0.7, 0.1, 0.6)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_combo_bg"]
+bg_color = Color(0.04, 0.08, 0.16, 0.85)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_combo_fill"]
+bg_color = Color(1, 0.65, 0.15, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd_bg"]
+bg_color = Color(0.02, 0.06, 0.14, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.7, 1, 0.5)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cd_fill"]
+bg_color = Color(0, 0.95, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 1, 1, 0.5568628)
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 1, 1, 0.5568628)
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+corner_detail = 5
+shadow_color = Color(0, 0, 1.0413129, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm2m"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.5019608, 1, 0.5568628)
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 1)
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_disabled"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.15, 0.25, 0.38, 0.8)
+border_width_bottom = 6
+border_color = Color(0.3, 0.4, 0.55, 1)
+corner_radius_top_left = 28
+corner_radius_top_right = 28
+corner_radius_bottom_right = 28
+corner_radius_bottom_left = 28
+corner_detail = 5
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_item_normal"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.04, 0.1, 0.22, 0.75)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.25, 0.8, 1, 0.5)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.3)
+shadow_size = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_item_hover"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.08, 0.22, 0.42, 0.9)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.5, 0.95, 1, 0.9)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+shadow_color = Color(0, 0, 0, 0.4)
+shadow_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_item_disabled"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.14, 0.08, 0.04, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.65, 0.2, 0.85)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[node name="Node2D" type="Node2D" unique_id=106444764]
+position = Vector2(576, 361)
+script = ExtResource("1_h2yge")
+backgrounds = Array[Texture2D]([ExtResource("bg_phase1"), ExtResource("bg_phase2"), ExtResource("bg_phase3"), ExtResource("bg_phase4"), ExtResource("bg_phase5")])
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1997380557]
+script = ExtResource("14_uimgr")
+
+[node name="Background" type="TextureRect" parent="CanvasLayer" unique_id=641562833]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -9.0
+offset_top = -20.0
+offset_right = 12.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("bg_phase1")
+
+[node name="Slime" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=1828004143]
+z_index = 10
+position = Vector2(577, 358)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_10q47")
+animation = &"jump_0"
+frame = 6
+frame_progress = 1.0
+
+[node name="HUDCard" type="PanelContainer" parent="CanvasLayer" unique_id=599744473]
+z_index = 25
+offset_left = 24.0
+offset_top = 20.0
+offset_right = 444.0
+offset_bottom = 170.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hud_card")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/HUDCard" unique_id=509502143]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="HeaderHBox" type="HBoxContainer" parent="CanvasLayer/HUDCard/VBox" unique_id=648524536]
+layout_mode = 2
+
+[node name="LevelTitle" type="Label" parent="CanvasLayer/HUDCard/VBox/HeaderHBox" unique_id=2129965641]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.878431, 0.968627, 0.980392, 1)
+theme_override_colors/font_outline_color = Color(0.00784314, 0.105882, 0.164706, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 24
+text = "LEVEL 1 / 150"
+
+[node name="Spacer" type="Control" parent="CanvasLayer/HUDCard/VBox/HeaderHBox" unique_id=1144053528]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlaceBadge" type="PanelContainer" parent="CanvasLayer/HUDCard/VBox/HeaderHBox" unique_id=70259128]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_place_badge")
+
+[node name="PlaceLabel" type="Label" parent="CanvasLayer/HUDCard/VBox/HeaderHBox/PlaceBadge" unique_id=1279354316]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.00784314, 0.105882, 0.164706, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 15
+text = "PADANG RUMPUT"
+
+[node name="CoinsHBox" type="HBoxContainer" parent="CanvasLayer/HUDCard/VBox" unique_id=620606651]
+layout_mode = 2
+
+[node name="CoinTag" type="Label" parent="CanvasLayer/HUDCard/VBox/CoinsHBox" unique_id=1898373077]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(0.290196, 0.180392, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 22
+text = "KOIN:"
+
+[node name="CoinAmount" type="Label" parent="CanvasLayer/HUDCard/VBox/CoinsHBox" unique_id=1775644510]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(0.290196, 0.180392, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 28
+text = "0"
+
+[node name="CoinRate" type="Label" parent="CanvasLayer/HUDCard/VBox/CoinsHBox" unique_id=1694433543]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.960784, 0.615686, 1)
+theme_override_colors/font_outline_color = Color(0.172549, 0.12549, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 17
+text = " (+1/klik)"
+
+[node name="InfoHBox" type="HBoxContainer" parent="CanvasLayer/HUDCard/VBox" unique_id=2145693528]
+layout_mode = 2
+
+[node name="SpeedLabel" type="Label" parent="CanvasLayer/HUDCard/VBox/InfoHBox" unique_id=2122959217]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.505882, 0.831373, 0.980392, 1)
+theme_override_colors/font_outline_color = Color(0.00784314, 0.105882, 0.164706, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 14
+text = "Loncat: 1.00s"
+
+[node name="Spacer2" type="Control" parent="CanvasLayer/HUDCard/VBox/InfoHBox" unique_id=1627594003]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClickCountLabel" type="Label" parent="CanvasLayer/HUDCard/VBox/InfoHBox" unique_id=794819710]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.690196, 0.745098, 0.772549, 1)
+theme_override_colors/font_outline_color = Color(0.00784314, 0.105882, 0.164706, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 14
+text = "Klik: 0"
+
+[node name="UpgradeButton" type="Button" parent="CanvasLayer" unique_id=2101102146]
+z_index = 25
+offset_left = 24.0
+offset_top = 185.0
+offset_right = 444.0
+offset_bottom = 260.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.00784314, 0.105882, 0.164706, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxFlat_up_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_up_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_up_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_up_disabled")
+text = "UPGRADE LEVEL (1 -> 2)
+Biaya: 10 Koin • +Koin (1/klik) & Loncat Makin Cepat"
+
+[node name="BottomClickArea" type="VBoxContainer" parent="CanvasLayer" unique_id=764908510]
+z_index = 25
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -148.0
+offset_right = 110.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="BoostButton" type="Button" parent="CanvasLayer/BottomClickArea" unique_id=776153663]
+visible = false
+custom_minimum_size = Vector2(220, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.3, 0.1, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_boost_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_boost_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_boost_hover")
+text = "BOOST 2X (KLIK SAYA!)"
+
+[node name="ComboLabel" type="Label" parent="CanvasLayer/BottomClickArea" unique_id=768277319]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.505882, 0.831373, 0.980392, 1)
+theme_override_colors/font_outline_color = Color(0.00784314, 0.105882, 0.164706, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 13
+text = "KLIK UNTUK COMBO"
+horizontal_alignment = 1
+
+[node name="ComboBar" type="ProgressBar" parent="CanvasLayer/BottomClickArea" unique_id=2058699492]
+custom_minimum_size = Vector2(220, 6)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_combo_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_combo_fill")
+max_value = 10.0
+show_percentage = false
+
+[node name="CooldownBar" type="ProgressBar" parent="CanvasLayer/BottomClickArea" unique_id=168439697]
+custom_minimum_size = Vector2(220, 8)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_cd_bg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cd_fill")
+max_value = 1.0
+value = 1.0
+show_percentage = false
+
+[node name="ClickButton" type="Button" parent="CanvasLayer/BottomClickArea" unique_id=1705302193]
+custom_minimum_size = Vector2(220, 68)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxFlat_ig7tw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_h2yge")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0xm2m")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_btn_disabled")
+text = "CLICK"
+
+[node name="FlashOverlay" type="ColorRect" parent="CanvasLayer" unique_id=923106524]
+modulate = Color(1, 1, 1, 0)
+z_index = 35
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CelebrationLabel" type="Label" parent="CanvasLayer" unique_id=2134380578]
+visible = false
+z_index = 50
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 90.0
+offset_right = 350.0
+offset_bottom = 150.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.117647, 0.203922, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 36
+text = "LEVEL UP!"
+horizontal_alignment = 1
+
+[node name="ShopBar" type="HBoxContainer" parent="CanvasLayer" unique_id=778810001]
+z_index = 25
+offset_left = 730.0
+offset_top = 20.0
+offset_right = 1128.0
+offset_bottom = 120.0
+theme_override_constants/separation = 6
+
+[node name="Item_strawberry" type="Button" parent="CanvasLayer/ShopBar" unique_id=778810010]
+custom_minimum_size = Vector2(60, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_item_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_item_disabled")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/ShopBar/Item_strawberry" unique_id=778810011]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/ShopBar/Item_strawberry/VBox" unique_id=778810012]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+texture = ExtResource("item_straw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/ShopBar/Item_strawberry/VBox" unique_id=778810013]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "Stroberi"
+horizontal_alignment = 1
+
+[node name="FuncLabel" type="Label" parent="CanvasLayer/ShopBar/Item_strawberry/VBox" unique_id=778810014]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.84, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 9
+text = "+25%"
+horizontal_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="CanvasLayer/ShopBar/Item_strawberry/VBox" unique_id=778810015]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "2,5K"
+horizontal_alignment = 1
+
+[node name="Item_diet_coke" type="Button" parent="CanvasLayer/ShopBar" unique_id=778810020]
+custom_minimum_size = Vector2(60, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_item_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_item_disabled")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/ShopBar/Item_diet_coke" unique_id=778810021]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/ShopBar/Item_diet_coke/VBox" unique_id=778810022]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+texture = ExtResource("item_dcoke")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/ShopBar/Item_diet_coke/VBox" unique_id=778810023]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "Diet Coke"
+horizontal_alignment = 1
+
+[node name="FuncLabel" type="Label" parent="CanvasLayer/ShopBar/Item_diet_coke/VBox" unique_id=778810024]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 9
+text = "-15% CD"
+horizontal_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="CanvasLayer/ShopBar/Item_diet_coke/VBox" unique_id=778810025]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "3,5K"
+horizontal_alignment = 1
+
+[node name="Item_orange" type="Button" parent="CanvasLayer/ShopBar" unique_id=778810030]
+custom_minimum_size = Vector2(60, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_item_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_item_disabled")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/ShopBar/Item_orange" unique_id=778810031]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/ShopBar/Item_orange/VBox" unique_id=778810032]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+texture = ExtResource("item_org")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/ShopBar/Item_orange/VBox" unique_id=778810033]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "Jeruk"
+horizontal_alignment = 1
+
+[node name="FuncLabel" type="Label" parent="CanvasLayer/ShopBar/Item_orange/VBox" unique_id=778810034]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.84, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 9
+text = "+50%"
+horizontal_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="CanvasLayer/ShopBar/Item_orange/VBox" unique_id=778810035]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "7,5K"
+horizontal_alignment = 1
+
+[node name="Item_mtn_dew" type="Button" parent="CanvasLayer/ShopBar" unique_id=778810040]
+custom_minimum_size = Vector2(60, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_item_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_item_disabled")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/ShopBar/Item_mtn_dew" unique_id=778810041]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/ShopBar/Item_mtn_dew/VBox" unique_id=778810042]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+texture = ExtResource("item_mdew")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/ShopBar/Item_mtn_dew/VBox" unique_id=778810043]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "Mtn Dew"
+horizontal_alignment = 1
+
+[node name="FuncLabel" type="Label" parent="CanvasLayer/ShopBar/Item_mtn_dew/VBox" unique_id=778810044]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 9
+text = "-25% CD"
+horizontal_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="CanvasLayer/ShopBar/Item_mtn_dew/VBox" unique_id=778810045]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "10,5K"
+horizontal_alignment = 1
+
+[node name="Item_pineapple" type="Button" parent="CanvasLayer/ShopBar" unique_id=778810050]
+custom_minimum_size = Vector2(60, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_item_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_item_disabled")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/ShopBar/Item_pineapple" unique_id=778810051]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/ShopBar/Item_pineapple/VBox" unique_id=778810052]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+texture = ExtResource("item_pine")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/ShopBar/Item_pineapple/VBox" unique_id=778810053]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "Nanas"
+horizontal_alignment = 1
+
+[node name="FuncLabel" type="Label" parent="CanvasLayer/ShopBar/Item_pineapple/VBox" unique_id=778810054]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.84, 0.36, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 9
+text = "+75%"
+horizontal_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="CanvasLayer/ShopBar/Item_pineapple/VBox" unique_id=778810055]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "17,5K"
+horizontal_alignment = 1
+
+[node name="Item_monster" type="Button" parent="CanvasLayer/ShopBar" unique_id=778810060]
+custom_minimum_size = Vector2(60, 98)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_item_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_item_hover")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_item_disabled")
+
+[node name="VBox" type="VBoxContainer" parent="CanvasLayer/ShopBar/Item_monster" unique_id=778810061]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 1
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="CanvasLayer/ShopBar/Item_monster/VBox" unique_id=778810062]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+texture = ExtResource("item_monst")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="CanvasLayer/ShopBar/Item_monster/VBox" unique_id=778810063]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "Monster"
+horizontal_alignment = 1
+
+[node name="FuncLabel" type="Label" parent="CanvasLayer/ShopBar/Item_monster/VBox" unique_id=778810064]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.36, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 9
+text = "-40% CD"
+horizontal_alignment = 1
+
+[node name="PriceLabel" type="Label" parent="CanvasLayer/ShopBar/Item_monster/VBox" unique_id=778810065]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("1_ig7tw")
+theme_override_font_sizes/font_size = 10
+text = "24,5K"
+horizontal_alignment = 1
+
+[node name="FeedbackContainer" type="Control" parent="CanvasLayer" unique_id=1976881476]
+z_index = 45
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="FeedbackManager" type="Node" parent="." unique_id=1849265876 node_paths=PackedStringArray("canvas_layer", "flash_rect", "feedback_container")]
+script = ExtResource("15_fbkmgr")
+canvas_layer = NodePath("../CanvasLayer")
+flash_rect = NodePath("../CanvasLayer/FlashOverlay")
+feedback_container = NodePath("../CanvasLayer/FeedbackContainer")
+
+[node name="SfxClick" type="AudioStreamPlayer" parent="FeedbackManager" unique_id=314546565]
+stream = ExtResource("8_click")
+
+[node name="SfxJump" type="AudioStreamPlayer" parent="FeedbackManager" unique_id=1826863520]
+stream = ExtResource("9_jump")
+
+[node name="SfxUpgrade" type="AudioStreamPlayer" parent="FeedbackManager" unique_id=1110395546]
+stream = ExtResource("10_upgrade")
+
+[node name="SfxLevelUp" type="AudioStreamPlayer" parent="FeedbackManager" unique_id=1042487040]
+stream = ExtResource("11_levelup")
+
+[node name="SfxPhaseChange" type="AudioStreamPlayer" parent="FeedbackManager" unique_id=1515873360]
+stream = ExtResource("12_phase")
+
+[node name="SfxBoost" type="AudioStreamPlayer" parent="FeedbackManager" unique_id=749392698]
+stream = ExtResource("13_boost")

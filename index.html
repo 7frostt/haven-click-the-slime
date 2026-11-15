@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haven - Click The Slime | Quick Info</title>
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <style>
+    :root {
+      --bg: #0f141c;
+      --card-bg: #182232;
+      --card-border: #26354a;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --text: #f1f5f9;
+      --text-muted: #94a3b8;
+      --success: #34d399;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 2.5rem 1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .container {
+      max-width: 840px;
+      width: 100%;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-img {
+      width: 110px;
+      height: 110px;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 24px rgba(52, 211, 153, 0.25));
+      margin-bottom: 1rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      color: #fff;
+    }
+
+    .tagline {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .badges {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 9999px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--accent);
+    }
+
+    .cta-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.65rem 1.4rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #0284c7;
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: #0369a1;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-secondary:hover {
+      background: #1f2d42;
+      border-color: #3b82f6;
+      transform: translateY(-1px);
+    }
+
+    /* Section Cards */
+    section {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h2::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+
+    /* Grid for Features */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .feature-card {
+      background: rgba(15, 20, 28, 0.6);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.35rem;
+    }
+
+    .feature-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+    }
+
+    /* Table */
+    .table-wrapper {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      text-align: left;
+    }
+
+    th, td {
+      padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    th {
+      color: var(--text-muted);
+      font-weight: 600;
+      background: rgba(15, 20, 28, 0.4);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .color-dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--card-border);
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <img src="assets/slimes/slime_transparent_1.png" alt="Slime Hero" class="hero-img">
+      <h1>Haven - Click The Slime</h1>
+      <p class="tagline">A cozy, juicy 2D incremental clicker game built with Godot Engine 4.7. Click, upgrade, and witness your slime evolve through 5 scenic phases.</p>
+      
+      <div class="badges">
+        <span class="badge">Godot Engine 4.x</span>
+        <span class="badge">150 Levels</span>
+        <span class="badge">5 Thematic Locations</span>
+        <span class="badge">Zero Gacha</span>
+        <span class="badge">CC0 Public Domain SFX</span>
+      </div>
+
+      <div class="cta-buttons">
+        <a href="https://github.com/7frostt/haven-click-the-slime" class="btn btn-primary" target="_blank" rel="noopener">
+          View on GitHub
+        </a>
+        <a href="https://github.com/7frostt/haven-click-the-slime/releases" class="btn btn-secondary" target="_blank" rel="noopener">
+          Releases & Downloads
+        </a>
+      </div>
+    </header>
+
+    <!-- Core Highlights -->
+    <section>
+      <h2>Key Gameplay Mechanics</h2>
+      <div class="grid-2">
+        <div class="feature-card">
+          <h3>Anti-Spam Jump Physics</h3>
+          <p>Slime leaps into the air with 7-frame animation and bounce-back physics. Clicks while airborne are ignored to reward rhythm.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Combo Frenzy 2X Boost</h3>
+          <p>Reach 10 consecutive rhythmic clicks to trigger Frenzy Mode, doubling all coin gains for 7 intense seconds.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Quick Shop (Food & Drinks)</h3>
+          <p>Instant single-use consumable buffs. Fruits multiply coins earned (+25% to +75%), while canned sodas reduce jump cooldown (-15% to -35%).</p>
+        </div>
+        <div class="feature-card">
+          <h3>Exponential Progression</h3>
+          <p>Mathematically tuned economic curve across 150 levels with a conclusive MAX milestone ending at Level 150.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 Locations Table -->
+    <section>
+      <h2>5 Thematic Places & Slime Forms</h2>
+      <p>Every 30 levels, the upgrade button transforms into a Transition Button, unlocking a brand new environment and visual form:</p>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Location</th>
+              <th>Levels</th>
+              <th>Slime Appearance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>1</strong></td>
+              <td>Padang Rumput (Grasslands)</td>
+              <td>1 - 30</td>
+              <td><span class="color-dot" style="background: #52ea1a;"></span> Classic Green Slime</td>
+            </tr>
+            <tr>
+              <td><strong>2</strong></td>
+              <td>Hutan Pepohonan (Forest)</td>
+              <td>31 - 60</td>
+              <td><span class="color-dot" style="background: #68493a;"></span> Mochi Brown Slime</td>
+            </tr>
+            <tr>
+              <td><strong>3</strong></td>
+              <td>Depan Mulut Gua (Cave Entrance)</td>
+              <td>61 - 90</td>
+              <td><span class="color-dot" style="background: #8b8b8b;"></span> Stone Grey Slime</td>
+            </tr>
+            <tr>
+              <td><strong>4</strong></td>
+              <td>Di Dalam Gua (Deep Cave)</td>
+              <td>91 - 120</td>
+              <td><span class="color-dot" style="background: #2effff;"></span> Bioluminescent Blue Slime</td>
+            </tr>
+            <tr>
+              <td><strong>5</strong></td>
+              <td>Gua Kristal (Crystal Cavern)</td>
+              <td>121 - 150</td>
+              <td><span class="color-dot" style="background: #a855f7;"></span> Crystal Purple Slime (MAX)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Architecture & Clean Hierarchy -->
+    <section>
+      <h2>Architecture & Project Hierarchy</h2>
+      <p>Clean 3-layer architecture for hackathon readability and maintainability:</p>
+      <div class="grid-2">
+        <div class="feature-card">
+          <h3>scripts/main.gd</h3>
+          <p>Coordinator: Handles state, exponential formulas, level upgrades, jump tweening, and place transitions.</p>
+        </div>
+        <div class="feature-card">
+          <h3>scripts/ui_manager.gd</h3>
+          <p>UI Controller: Manages HUD cards, shop items, cooldown countdowns, and button state toggling.</p>
+        </div>
+        <div class="feature-card">
+          <h3>scripts/feedback_manager.gd</h3>
+          <p>Game Feel: Controls audio SFX playback, floating score popups, and squash-and-stretch button tweens.</p>
+        </div>
+        <div class="feature-card">
+          <h3>assets/</h3>
+          <p>Strictly partitioned folders for audio, backgrounds, fonts, shop items, and slime sprite frames.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>Built for the Hackathon by <a href="https://github.com/7frostt" target="_blank" rel="noopener">7frostt</a> &bull; Powered by Godot Engine 4.7</p>
+    </footer>
+  </div>
+
+</body>
+</html>

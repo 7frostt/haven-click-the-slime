@@ -208,6 +208,7 @@ haven-click-the-slime/
 ├── .gitattributes
 ├── .gitignore
 ├── icon.svg
+├── index.html                 # Halaman web info ringkas (quick info landing page)
 ├── main.tscn                  # Scene utama game (CanvasLayer, UI, Slime, Audio)
 ├── project.godot
 └── README.md

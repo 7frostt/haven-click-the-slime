@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://doc7duvukwwxf"
-path="res://.godot/imported/Phase 5 (2).png-99c9e797f1ce51b4206bef6f491a2167.ctex"
+path="res://.godot/imported/Phase 5 (2).png-fba68b159564d1cdff2088d68a7ddde8.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/slimes/Phase 5 (2).png"
-dest_files=["res://.godot/imported/Phase 5 (2).png-99c9e797f1ce51b4206bef6f491a2167.ctex"]
+dest_files=["res://.godot/imported/Phase 5 (2).png-fba68b159564d1cdff2088d68a7ddde8.ctex"]
 
 [params]
 

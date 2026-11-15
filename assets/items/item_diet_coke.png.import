@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ln77srl1dkdt"
-path="res://.godot/imported/item_diet_coke.png-4be0c1d90a7cef049f2973692228fe7a.ctex"
+path="res://.godot/imported/item_diet_coke.png-8afc9d30f91f1f01e8f927bfb6ba4e2e.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/items/item_diet_coke.png"
-dest_files=["res://.godot/imported/item_diet_coke.png-4be0c1d90a7cef049f2973692228fe7a.ctex"]
+dest_files=["res://.godot/imported/item_diet_coke.png-8afc9d30f91f1f01e8f927bfb6ba4e2e.ctex"]
 
 [params]
 

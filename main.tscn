@@ -1,41 +1,51 @@
-[gd_scene format=3 uid="uid://nhou7gewruup"]
+[gd_scene format=3 uid="uid://bdg83kaw51pk0"]
 
-[ext_resource type="Script" uid="uid://h0cmvsvmr8n3" path="res://scripts/main.gd" id="1_h2yge"]
-[ext_resource type="FontFile" uid="uid://cjggqrq4by8pu" path="res://assets/fonts/Melon Squishy.otf" id="1_ig7tw"]
-[ext_resource type="Texture2D" uid="uid://dhx4et2cbomps" path="res://assets/slimes/slime_transparent_1.png" id="3_5vw27"]
-[ext_resource type="Texture2D" uid="uid://cowwkhqgasv82" path="res://assets/slimes/slime_transparent_2.png" id="4_kek77"]
-[ext_resource type="Texture2D" uid="uid://n565858wvvd1" path="res://assets/slimes/slime_transparent_3.png" id="5_4c57u"]
-[ext_resource type="Texture2D" uid="uid://ngoy271y003s" path="res://assets/slimes/slime_transparent_4.png" id="6_efxa6"]
-[ext_resource type="Texture2D" uid="uid://bdkhqf8fbpwkv" path="res://assets/slimes/slime_transparent_5.png" id="7_dg77c"]
-[ext_resource type="AudioStream" uid="uid://05ubfr606a8e" path="res://assets/audio/sfx_click.wav" id="8_click"]
-[ext_resource type="AudioStream" uid="uid://d5aeaxp120tp" path="res://assets/audio/sfx_jump.wav" id="9_jump"]
-[ext_resource type="AudioStream" uid="uid://c275a0yul3nft" path="res://assets/audio/sfx_upgrade.wav" id="10_upgrade"]
-[ext_resource type="AudioStream" uid="uid://civl5bcdrkbx2" path="res://assets/audio/sfx_level_up.wav" id="11_levelup"]
-[ext_resource type="AudioStream" uid="uid://fqimw3qf5ens" path="res://assets/audio/sfx_phase_change.wav" id="12_phase"]
-[ext_resource type="AudioStream" uid="uid://cymvqreqt22qk" path="res://assets/audio/sfx_boost.wav" id="13_boost"]
-[ext_resource type="Script" uid="uid://h4ufjxqxm3db" path="res://scripts/ui_manager.gd" id="14_uimgr"]
-[ext_resource type="Script" uid="uid://bwbwhyprey3ma" path="res://scripts/feedback_manager.gd" id="15_fbkmgr"]
-[ext_resource type="Texture2D" uid="uid://w0m15cbwgdx1" path="res://assets/slimes/Phase 1.png" id="18_ok6jj"]
-[ext_resource type="Texture2D" uid="uid://d1w4fvlxgvy7y" path="res://assets/slimes/Phase 2.png" id="19_facbu"]
-[ext_resource type="Texture2D" uid="uid://sy1kggl47jdo" path="res://assets/slimes/Phase 3.png" id="20_b1qrp"]
-[ext_resource type="Texture2D" uid="uid://brcqv0dchfopo" path="res://assets/slimes/Phase 4.png" id="21_come4"]
-[ext_resource type="Texture2D" uid="uid://b3s310mfm3a1w" path="res://assets/slimes/Phase 5.png" id="22_h8e4i"]
-[ext_resource type="Texture2D" uid="uid://mithl5rrlimx" path="res://assets/backgrounds/Phase 1 (#1).jpeg" id="bg_phase1"]
-[ext_resource type="Texture2D" uid="uid://5okvnfn7kxpd" path="res://assets/backgrounds/Phase 1 (#2).jpeg" id="bg_phase2"]
-[ext_resource type="Texture2D" uid="uid://deyjbhjqxqha3" path="res://assets/backgrounds/Phase 1 (#3).jpeg" id="bg_phase3"]
-[ext_resource type="Texture2D" uid="uid://cyhe17b3mkn2a" path="res://assets/backgrounds/Phase 1 (#4).jpeg" id="bg_phase4"]
-[ext_resource type="Texture2D" uid="uid://ctcdqcdmx7a1q" path="res://assets/backgrounds/Phase 1 (#5).jpeg" id="bg_phase5"]
-[ext_resource type="Texture2D" uid="uid://ln77srl1dkdt" path="res://assets/items/item_diet_coke.png" id="item_dcoke"]
-[ext_resource type="Texture2D" uid="uid://bn30mqhabiooc" path="res://assets/items/item_mtn_dew.png" id="item_mdew"]
-[ext_resource type="Texture2D" uid="uid://dncraio5ubyu8" path="res://assets/items/item_monster.png" id="item_monst"]
-[ext_resource type="Texture2D" uid="uid://b34wq4gdv48pr" path="res://assets/items/item_orange.png" id="item_org"]
-[ext_resource type="Texture2D" uid="uid://co4dwhfy44obe" path="res://assets/items/item_pineapple.png" id="item_pine"]
-[ext_resource type="Texture2D" uid="uid://0nfhrox3iwvi" path="res://assets/items/item_strawberry.png" id="item_straw"]
-[ext_resource type="Texture2D" uid="uid://uuuwx64vrn8f" path="res://assets/slimes/slime_phase2_1.png" id="s2_1"]
-[ext_resource type="Texture2D" uid="uid://da14nyvkjsy3k" path="res://assets/slimes/slime_phase2_2.png" id="s2_2"]
-[ext_resource type="Texture2D" uid="uid://vkjk83gvcgtr" path="res://assets/slimes/slime_phase2_3.png" id="s2_3"]
-[ext_resource type="Texture2D" uid="uid://d03ghh8sfmtou" path="res://assets/slimes/slime_phase2_4.png" id="s2_4"]
-[ext_resource type="Texture2D" uid="uid://cj5pi37jmh2ks" path="res://assets/slimes/slime_phase2_5.png" id="s2_5"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_h2yge"]
+[ext_resource type="FontFile" path="res://assets/fonts/Melon Squishy.otf" id="1_ig7tw"]
+[ext_resource type="Texture2D" path="res://assets/slimes/slime_transparent_1.png" id="3_5vw27"]
+[ext_resource type="Texture2D" path="res://assets/slimes/slime_transparent_2.png" id="4_kek77"]
+[ext_resource type="Texture2D" path="res://assets/slimes/slime_transparent_3.png" id="5_4c57u"]
+[ext_resource type="Texture2D" path="res://assets/slimes/slime_transparent_4.png" id="6_efxa6"]
+[ext_resource type="Texture2D" path="res://assets/slimes/slime_transparent_5.png" id="7_dg77c"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_click.wav" id="8_click"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_jump.wav" id="9_jump"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_upgrade.wav" id="10_upgrade"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_level_up.wav" id="11_levelup"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_phase_change.wav" id="12_phase"]
+[ext_resource type="AudioStream" path="res://assets/audio/sfx_boost.wav" id="13_boost"]
+[ext_resource type="Script" path="res://scripts/ui_manager.gd" id="14_uimgr"]
+[ext_resource type="Script" path="res://scripts/feedback_manager.gd" id="15_fbkmgr"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 1.png" id="18_ok6jj"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 1 (2).png" id="18_qnost"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 2.png" id="19_facbu"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 2 (2).png" id="19_wnkbs"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 3.png" id="20_b1qrp"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 3 (2).png" id="20_f6a44"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 4 (2).png" id="21_0cbny"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 4.png" id="21_come4"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 5.png" id="22_h8e4i"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 5 (2).png" id="22_hrvbo"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 1 (L).png" id="28_uypp3"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 2 (L).png" id="29_blkrb"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 3 (L).png" id="30_abqjc"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 4 (L).png" id="31_6iyjs"]
+[ext_resource type="Texture2D" path="res://assets/slimes/Phase 5 (L).png" id="32_4w656"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/Phase 1 (#1).jpeg" id="bg_phase1"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/Phase 1 (#2).jpeg" id="bg_phase2"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/Phase 1 (#3).jpeg" id="bg_phase3"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/Phase 1 (#4).jpeg" id="bg_phase4"]
+[ext_resource type="Texture2D" path="res://assets/backgrounds/Phase 1 (#5).jpeg" id="bg_phase5"]
+[ext_resource type="Texture2D" path="res://assets/items/item_diet_coke.png" id="item_dcoke"]
+[ext_resource type="Texture2D" path="res://assets/items/item_mtn_dew.png" id="item_mdew"]
+[ext_resource type="Texture2D" path="res://assets/items/item_monster.png" id="item_monst"]
+[ext_resource type="Texture2D" path="res://assets/items/item_orange.png" id="item_org"]
+[ext_resource type="Texture2D" path="res://assets/items/item_pineapple.png" id="item_pine"]
+[ext_resource type="Texture2D" path="res://assets/items/item_strawberry.png" id="item_straw"]
+[ext_resource type="Texture2D" path="res://assets/slimes/slime_phase2_1.png" id="s2_1"]
+[ext_resource type="Texture2D" path="res://assets/slimes/slime_phase2_2.png" id="s2_2"]
+[ext_resource type="Texture2D" path="res://assets/slimes/slime_phase2_3.png" id="s2_3"]
+[ext_resource type="Texture2D" path="res://assets/slimes/slime_phase2_4.png" id="s2_4"]
+[ext_resource type="Texture2D" path="res://assets/slimes/slime_phase2_5.png" id="s2_5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_10q47"]
 animations = [{
@@ -93,6 +103,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("18_qnost")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wnkbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_f6a44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_0cbny")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_hrvbo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qnost")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wnkbs")
+}],
+"loop": 0,
+"name": &"jump_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("18_ok6jj")
 }, {
 "duration": 1.0,
@@ -114,7 +150,33 @@ animations = [{
 "texture": ExtResource("18_ok6jj")
 }],
 "loop": 0,
-"name": &"jump_2",
+"name": &"jump_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_uypp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_blkrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_abqjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_6iyjs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_4w656")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_blkrb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_uypp3")
+}],
+"loop": 0,
+"name": &"jump_4",
 "speed": 5.0
 }]
 
@@ -421,7 +483,9 @@ z_index = 10
 position = Vector2(577, 358)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_10q47")
-animation = &"jump_2"
+animation = &"jump_4"
+frame = 6
+frame_progress = 1.0
 
 [node name="HUDCard" type="PanelContainer" parent="CanvasLayer" unique_id=599744473]
 z_index = 25

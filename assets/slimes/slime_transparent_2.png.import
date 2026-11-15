@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cowwkhqgasv82"
-path="res://.godot/imported/slime_transparent_2.png-0776bd47d09ba5aaa2badd52a598f701.ctex"
+path="res://.godot/imported/slime_transparent_2.png-d0bad7c8f229e415ac1b0c412fee055c.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://assets/slimes/slime_transparent_2.png"
-dest_files=["res://.godot/imported/slime_transparent_2.png-0776bd47d09ba5aaa2badd52a598f701.ctex"]
+dest_files=["res://.godot/imported/slime_transparent_2.png-d0bad7c8f229e415ac1b0c412fee055c.ctex"]
 
 [params]
 

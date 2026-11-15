@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://05ubfr606a8e"
-path="res://.godot/imported/sfx_click.wav-98d713802d2876d41299301476380857.sample"
+path="res://.godot/imported/sfx_click.wav-2e9524f77eff3a8dc05f84b10aa267b4.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx_click.wav"
-dest_files=["res://.godot/imported/sfx_click.wav-98d713802d2876d41299301476380857.sample"]
+dest_files=["res://.godot/imported/sfx_click.wav-2e9524f77eff3a8dc05f84b10aa267b4.sample"]
 
 [params]
 

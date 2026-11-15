@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://civl5bcdrkbx2"
-path="res://.godot/imported/sfx_level_up.wav-1960cd40c8cc7b4322b73a8af1f4fafb.sample"
+path="res://.godot/imported/sfx_level_up.wav-0923c2cbdebe36ec5f0392f519534703.sample"
 
 [deps]
 
 source_file="res://assets/audio/sfx_level_up.wav"
-dest_files=["res://.godot/imported/sfx_level_up.wav-1960cd40c8cc7b4322b73a8af1f4fafb.sample"]
+dest_files=["res://.godot/imported/sfx_level_up.wav-0923c2cbdebe36ec5f0392f519534703.sample"]
 
 [params]
 

@@ -200,8 +200,6 @@ haven-click-the-slime/
 │   ├── fonts/                 # Tipografi font (Melon Squishy.otf)
 │   ├── items/                 # Ikon item toko makanan & minuman
 │   └── slimes/                # Kumpulan frame animasi Slime (Phase 1 - 5)
-├── scenes/
-│   └── main.tscn              # Scene utama game (CanvasLayer, UI, Slime, Audio)
 ├── scripts/
 │   ├── main.gd                # Coordinator: State game, level, koin, belanja, tween loncat
 │   ├── ui_manager.gd          # UI Controller: HUD, kartu item toko, cooldown bar, tombol upgrade
@@ -210,6 +208,7 @@ haven-click-the-slime/
 ├── .gitattributes
 ├── .gitignore
 ├── icon.svg
+├── main.tscn                  # Scene utama game (CanvasLayer, UI, Slime, Audio)
 ├── project.godot
 └── README.md
 ```

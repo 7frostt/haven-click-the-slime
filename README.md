@@ -188,35 +188,43 @@ Daftar tutorial video YouTube yang relevan dengan implementasi teknik pada game 
 
 ---
 
-## 9. Arsitektur Kode (Modular Scripts)
+## 9. Struktur Folder & Arsitektur Kode (Clean Hierarchy)
 
-Proyek ini menggunakan pembagian tanggung jawab 3 script agar kode tidak terlalu panjang, terisolasi dengan rapi, dan mudah dipahami:
+Proyek ini telah ditata dengan struktur hierarki folder yang bersih, rapi, dan modular:
 
 ```text
 haven-click-the-slime/
-├── main.tscn                  # Scene utama (Node2D, CanvasLayer, AnimatedSprite2D, Audio)
-├── main.gd                    # Game Coordinator: Menangani formula GDD, timer boost, level, belanja item & tween loncat
-├── ui_manager.gd              # UI Controller: Menangani HUD card, Shop card, cooldown bar, tombol upgrade & combo meter
-├── feedback_manager.gd        # Juiciness & Audio: Mengontrol playback audio SFX, partikel koin & screen flash
-├── Melon Squishy.otf          # Font utama game
-├── sfx_*.wav                  # Aset efek suara WAV
-├── slime_transparent_*.png    # Aset animasi Slime Phase 1
-├── slime_phase2_*.png         # Aset animasi Slime Phase 2
-├── item_*.png                 # Aset gambar item toko (Makanan & Minuman)
-└── Phase 1 (#1..#5).jpeg      # Aset latar 5 tempat (Background)
+├── assets/
+│   ├── audio/                 # Aset audio SFX (sfx_*.wav)
+│   ├── backgrounds/           # Aset gambar latar belakang 5 tempat
+│   ├── fonts/                 # Tipografi font (Melon Squishy.otf)
+│   ├── items/                 # Ikon item toko makanan & minuman
+│   └── slimes/                # Kumpulan frame animasi Slime (Phase 1 - 5)
+├── scenes/
+│   └── main.tscn              # Scene utama game (CanvasLayer, UI, Slime, Audio)
+├── scripts/
+│   ├── main.gd                # Coordinator: State game, level, koin, belanja, tween loncat
+│   ├── ui_manager.gd          # UI Controller: HUD, kartu item toko, cooldown bar, tombol upgrade
+│   └── feedback_manager.gd    # Game Feel: Pemutar audio SFX, partikel koin, pop effect
+├── .editorconfig
+├── .gitattributes
+├── .gitignore
+├── icon.svg
+├── project.godot
+└── README.md
 ```
 
 ### Penjelasan Setiap Script:
-1. **`main.gd` (Coordinator):**
+1. **`scripts/main.gd` (Coordinator):**
    - Menyimpan state utama (koin, level, phase, combo, status aktif item).
    - Menghitung rumus eksponensial koin, biaya upgrade, durasi loncatan, dan batas cooldown minimum (0.15s).
    - Mengatur tween loncat slime secara programmatic.
-2. **`ui_manager.gd` (UI Controller):**
+2. **`scripts/ui_manager.gd` (UI Controller):**
    - Menangani tombol klik khusus (`ClickButton`) dan mencegah klik sembarang tempat di layar.
    - Mengatur teks HUD (level, koin, durasi loncat, nama zona).
    - Mengatur tombol Upgrade / Pindah Tempat / MAX.
    - Mengontrol tampilan toko makanan dan minuman beserta label countdown detik.
-3. **`feedback_manager.gd` (Game Feel / Juiciness):**
+3. **`scripts/feedback_manager.gd` (Game Feel / Juiciness):**
    - Memutar audio SFX yang tepat sesuai aksi pemain.
    - Menampilkan angka koin melayang (*floating coin numbers*).
    - Menjalankan efek squash-and-stretch pada tombol saat ditekan.
@@ -227,12 +235,21 @@ haven-click-the-slime/
 
 Script `main.gd` dirancang untuk **mendeteksi animasi baru secara otomatis**. Anda tidak perlu menulis ulang kode script untuk menambah fase berikutnya:
 
-1. **Siapkan Gambar:** Simpan 5 file frame animasi slime baru (misal: `slime_phase3_1.png` s/d `slime_phase3_5.png`) ke dalam folder proyek.
+1. **Siapkan Gambar:** Simpan 5 file frame animasi slime baru ke dalam folder `assets/slimes/`.
 2. **Buka SpriteFrames di Godot:**
+   - Buka scene `scenes/main.tscn`.
    - Pilih node `CanvasLayer/Slime` di panel Scene.
    - Di panel Inspector, klik resource `SpriteFrames`.
 3. **Tambah Animasi Baru Sesuai Index:**
    - **Phase 3** (Depan Gua) -> Beri nama: `jump_2`
+   - **Phase 4** (Dalam Gua) -> Beri nama: `jump_3`
+   - **Phase 5** (Gua Kristal) -> Beri nama: `jump_4`
+4. **Atur Frame & Kecepatan:**
+   - Set **Speed (FPS)** ke `10.0`.
+   - Matikan **Looping** (animasi tidak berulang sendiri).
+   - Susun urutan 7 frame berikut:
+     `Image 1 -> Image 2 -> Image 3 -> Image 4 -> Image 5 -> Image 2 -> Image 1`
+5. **Simpan Scene (`Ctrl + S`)**: Ketika game dimainkan dan pemain mencapai fase tersebut, animasi baru akan langsung dimuat dengan warna aslinya secara otomatis.
    - **Phase 4** (Dalam Gua) -> Beri nama: `jump_3`
    - **Phase 5** (Gua Kristal) -> Beri nama: `jump_4`
 4. **Atur Frame & Kecepatan:**
